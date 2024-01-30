@@ -19,7 +19,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.5</size>
+              <size>0.05 0.05 0.05</size>
             </box>
           </geometry>
           <surface>
@@ -40,7 +40,7 @@
           <geometry>
             <mesh>
                 <uri>model://aruco_box/model.dae</uri>
-                <scale>0.25 0.25 0.25</scale>
+                <scale>0.025 0.025 0.025</scale>
             </mesh>
           </geometry>
         </visual>

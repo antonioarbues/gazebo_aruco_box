@@ -9,11 +9,11 @@ class MarkerFactory:
 
     @staticmethod
     def create_marker(size, id, margin):
-        aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
+        aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_6X6_250)
 
         # white background
         img = 255 * np.ones((size, size), dtype=np.uint8)
-        img_marker = aruco.drawMarker(aruco_dict, id, size - 2 * margin)
+        img_marker = aruco.generateImageMarker(aruco_dict, id, size - 2 * margin)
 
         # add marker centered
         img[margin:-margin, margin:-margin] = img_marker
@@ -43,10 +43,10 @@ class TileMap:
 
 
 @click.command()
-@click.argument("path", type=click.Path(exists=True))
+@click.argument("path", type=click.Path(exists=True), default="./my_cube")
 @click.option("--tile_size", type=int, default=100)
 def main(path, tile_size):
-    margin = int(0.3 * tile_size)
+    margin = int(0.1 * tile_size)
 
     marker_factory = MarkerFactory()
     tile_map = TileMap(tile_size)
